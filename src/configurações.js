@@ -1,22 +1,38 @@
 let configs = {
     groups: {
         useDefaultGroups: false,
-        Routers: { color: { background: 'red' }, borderWidth: 1, shape: 'dot' },
-        Switch: { color: { background: 'green' }, borderWidth: 1, shape: 'diamond' },
-        Computers: { color: { background: 'blue' }, borderWidth: 1, shape: 'star' },
+        roteador: { color: { background: 'red' }, borderWidth: 1, shape: 'image', image: "https://visjs.github.io/vis-network/examples/network/img/refresh-cl/Network-Pipe-icon.png" },
+        switch: { color: { background: 'green' }, borderWidth: 1, shape: 'image', image: "https://visjs.github.io/vis-network/examples/network/img/refresh-cl/Network-Drive-icon.png" },
+        computador: { color: { background: 'blue' }, borderWidth: 1, shape: 'image', image: "https://visjs.github.io/vis-network/examples/network/img/refresh-cl/Hardware-My-Computer-3-icon.png" },
     },
     manipulation: {
         enabled: true,
         initiallyActive: false,
-        addNode: true,
-        addEdge: true,
-        editNode: true,
-        editEdge: true,
+        addEdge: function(edgeData, callback) {
+            edgeData.label = prompt("peso da aresta?")
+            callback(edgeData)
+        },
+        editNode: function(nodeData, callback) {
+            let novoNome = prompt("novo nome: (deixe em branco se não quiser mudar)")
+            nodeData.label =  novoNome ? novoNome : nodeData.label
+            // let novoTipo = prompt("mudar o tipo de nó? (deixe em branco se não quiser mudar)").toLowerCase()
+            // nodeData.group = novoTipo ? novoTipo : nodeData.group
+            callback(nodeData)
+        },
+        editEdge: function (edgeData, callback) {
+            edgeData.label = prompt("Novo peso:")
+            callback(edgeData)
+        },
         deleteNode: true,
         deleteEdge: true,
         controlNodeStyle: {
             // all node options are valid.
-        }
+        },
+        addNode: function(nodeData,callback) {
+            nodeData.label = prompt("Nome do novo nó:");
+            nodeData.group = prompt("Tipo de nó: (computador, roteador, switch)").toLowerCase()
+            callback(nodeData);
+          }
     },
     edges: {
         arrows: {
