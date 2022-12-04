@@ -25,15 +25,15 @@ export default function App() {
       { id: 9, label: "Node 9", title: "node 9 tootip text" }
     ],
     edges: [
-      { from: 2, to: 1 },
-      { from: 3, to: 1 },
-      { from: 4, to: 1 },
-      { from: 1, to: 5 },
-      { from: 5, to: 1 },
-      { from: 6, to: 5 },
-      { from: 7, to: 5 },
-      { from: 8, to: 5 },
-      { from: 9, to: 5 },
+      { from: 2, to: 1, label: "23" },
+      { from: 3, to: 1, label: "5" },
+      { from: 4, to: 1, label: "14" },
+      { from: 1, to: 5, label: "35" },
+      { from: 5, to: 1, label:"13" },
+      { from: 6, to: 5, label: "2" },
+      { from: 7, to: 5, label: "8"},
+      { from: 8, to: 5, label: "7" },
+      { from: 9, to: 5, label: "9" },
 
     ]
   };
