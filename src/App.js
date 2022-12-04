@@ -1,5 +1,5 @@
 import React from "react";
-import configs from './configurações'
+import configs from "./configurações";
 import Graph from "react-vis-network-graph";
 
 export default function App() {
@@ -26,27 +26,58 @@ export default function App() {
       { from: 1, to: 5, label: "35" },
       { from: 5, to: 1, label: "13" },
       { from: 6, to: 10, label: "2" },
-      { from: 7, to: 10, label: "8" },
+      { from: 7, to: 10, label: "8"  },
       { from: 8, to: 10, label: "7" },
       { from: 9, to: 10, label: "9" },
       { from: 10, to: 5, label: "10" },
-    ]
+    ],
   };
 
+  let graph2 = [];
+  let x = {};
+  let y = {};
+  function createEmptyMatrix() {
+    for (let index = 0; index < graph.nodes.length; index++) {
+      graph2.push(new Array(graph.nodes.length));
+    }
+  }
+
+  function populateMatrix() {
+    for (let i = 0; i < graph.nodes.length; i++) {
+      for (let j = 0; j < graph.edges.length; j++) {
+        if (graph.nodes[i].id == graph.edges[j].from) {
+          x = graph2[graph.nodes[i].id];
+
+          y = graph2[graph.nodes[i].id]
+          //[graph.edges[j].to];
+          console.log(y);
+          if (x == y) {
+          } else {
+            graph2[x] = graph.edges[j].to;
+          }
+        }
+      }
+    }
+  }
+  console.log(graph2);
+
+  createEmptyMatrix();
+  populateMatrix();
+
   const options = {
-    locale: 'pt-br',
+    locale: "pt-br",
     height: "800px",
     width: "1000px",
     manipulation: configs.manipulation,
     edges: configs.edges,
     nodes: configs.nodes,
-    groups: configs.groups
+    groups: configs.groups,
   };
 
   const events = {
     select: function (event) {
       const { nodes, edges } = event;
-    }
+    },
   };
 
   return (
