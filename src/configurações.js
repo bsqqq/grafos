@@ -1,7 +1,9 @@
 let configs = {
     groups: {
         useDefaultGroups: false,
-        Routers: { color: { background: 'red' }, borderWidth: 3, shape: 'ellipse' }
+        Routers: { color: { background: 'red' }, borderWidth: 1, shape: 'dot' },
+        Switch: { color: { background: 'green' }, borderWidth: 1, shape: 'diamond' },
+        Computers: { color: { background: 'blue' }, borderWidth: 1, shape: 'star' },
     },
     manipulation: {
         enabled: true,
@@ -169,7 +171,7 @@ let configs = {
             y: false
         },
         font: {
-            color: '#343434',
+            color: '',
             size: 14, // px
             face: 'arial',
             background: 'none',
