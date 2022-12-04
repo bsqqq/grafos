@@ -123,18 +123,16 @@ function fordFulkerson(graph, s, t)
 // Driver code
  
 // Let us create a graph shown in the above example
-let graph = [ [ 0, 23, 5, 14, 35, 0, 0, 0, 0],
-              [ 23, 0, 0, 0, 0, 0, 0, 0, 0 ],
-              [ 5, 0, 0, 0, 0, 0, 0, 0, 0 ], 
-              [ 14, 0, 0, 0, 0, 0, 0, 0, 0 ],
-              [ 35, 0, 0, 0, 0, 2, 8, 7, 9 ],  
-              [ 0, 0, 0, 0, 2, 0, 0, 0, 0 ],
-              [ 0, 0, 0, 0, 8, 0, 0, 0, 0 ],
-              [ 0, 0, 0, 0, 7, 0, 0, 0, 0 ],
-              [ 0, 0, 0, 0, 9, 0, 0, 0, 0 ]
+let graph = [ [ 0, 16, 13, 0, 0, 0],
+              [ 0, 0, 10, 12, 0, 0],
+              [ 0, 4, 0, 0, 14, 0],
+              [ 0, 0, 9, 0, 0, 20],
+              [ 0, 0, 0, 7, 0, 4],
+              [ 0, 0, 0, 0, 0, 0]
              ];
-document.write("The maximum possible flow is " +
-               fordFulkerson(graph, 0, 8));
+//document.write("The maximum possible flow is " +
+//               fordFulkerson(graph, 0, 8));
 
- 
+console.log("The maximum possible flow is " +
+fordFulkerson(graph, 0, 5))
 // This code is contributed by avanitrachhadiya2155
