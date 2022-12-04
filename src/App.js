@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import configs from './configurações'
 import Graph from "react-vis-network-graph";
 
 export default function App() {
+ 
   const graph = {
     nodes: [
       { id: 1, label: "roteador 1", title: "roteador", group: "roteador" },
