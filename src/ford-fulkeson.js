@@ -3,11 +3,17 @@
 // Fulkerson algorithm
  
 // Number of vertices in graph
-let V = 6;
  
 // Returns true if there is a path from source
 // 's' to sink 't' in residual graph. Also
 // fills parent[] to store the path
+let V;
+
+function addVertices(vertices){
+ V = vertices;
+}
+    
+
 function bfs(rGraph, s, t, parent)
 {
      
@@ -121,5 +127,5 @@ function fordFulkerson(graph, s, t)
     return max_flow;
    
 }
-export default fordFulkerson;
+export {fordFulkerson, addVertices};
 // This code is contributed by avanitrachhadiya2155
