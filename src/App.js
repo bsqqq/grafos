@@ -1,10 +1,10 @@
 import React from "react";
 import configs from "./configurações";
 import Graph from "react-vis-network-graph";
-import fordFulkerson from "./ford-fulkeson";
+import { fordFulkerson, addVertices } from "./ford-fulkeson";
 import { populateMatrix, createEmptyMatrix } from "./matrix-generator";
 
-
+let counter =0;
 export default function App() {
   const graph = {
     nodes: [
@@ -55,12 +55,16 @@ export default function App() {
   };
 
   
-
-  
-
+  if(counter > 0){
+ 
+  }else{
   createEmptyMatrix(graph);
   let graphPopulated = populateMatrix(graph);
+  addVertices(graph.nodes.length);
   fordFulkerson(graphPopulated, 0, 5);
+counter++ 
+}
+  
 
   const options = {
     locale: "pt-br",
