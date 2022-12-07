@@ -2,7 +2,7 @@ let graph2 = [];
 function createEmptyMatrix(graph) {
   for (let index = 0; index < graph.nodes.length; index++) {
     let array = [];
-
+    array.push(0);
     for (let index = 0; index < graph.nodes.length; index++) {
       array.push(0);
     }
@@ -22,21 +22,6 @@ function populateMatrix(graph) {
 
         if (x === y) {
         } else {
-          let array;
-
-          if (x === graph.edges.length) {
-            array = graph2[x - 1];
-          } else {
-            array = graph2[x];
-          }
-
-          let teste;
-          if (y === graph.edges.length) {
-            teste = array[y - 1];
-          } else {
-            teste = array[y];
-          }
-
           let teste2 = parseInt(graph.edges[j].label);
 
           graph2[x - 1][y - 1] = teste2;

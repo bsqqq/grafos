@@ -11,6 +11,16 @@ let configs = {
         addEdge: function(edgeData, callback) {
             edgeData.label = prompt("peso da aresta?")
             callback(edgeData)
+
+            let graph = JSON.parse(localStorage.getItem("graph"))
+            console.log(edgeData)
+            let newEdge = { 
+                from: graph.nodes.length + 1, 
+                to: edgeData.to, 
+                label: edgeData.label
+            }
+            graph.edges.push(newEdge)
+            localStorage.setItem("graph", JSON.stringify(graph))
         },
         editNode: function(nodeData, callback) {
             let novoNome = prompt("novo nome: (deixe em branco se não quiser mudar)")
@@ -32,6 +42,17 @@ let configs = {
             nodeData.label = prompt("Nome do novo nó:");
             nodeData.group = prompt("Tipo de nó: (computador, roteador, switch)").toLowerCase()
             callback(nodeData);
+            let graph = JSON.parse(localStorage.getItem("graph"))
+
+            let newNode = {
+                id: graph.nodes.length + 1,
+                label: nodeData.label,
+                title: `${nodeData.label} tootip text`,
+                group: nodeData.group
+            }
+            graph.nodes.push(newNode)
+
+            localStorage.setItem("graph", JSON.stringify(graph))
           }
     },
     // edges: {

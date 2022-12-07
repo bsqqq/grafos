@@ -4,7 +4,6 @@ import Graph from "react-vis-network-graph";
 import { fordFulkerson, addVertices } from "./ford-fulkeson";
 import { populateMatrix, createEmptyMatrix } from "./matrix-generator";
 
-let counter =0;
 export default function App() {
   const graph = {
     nodes: [
@@ -54,21 +53,22 @@ export default function App() {
     ],
   };
 
+  localStorage.setItem("graph", JSON.stringify(graph))
+
   
-  if(counter > 0){
- 
-  }else{
-  createEmptyMatrix(graph);
-  let graphPopulated = populateMatrix(graph);
-  addVertices(graph.nodes.length);
-  fordFulkerson(graphPopulated, 0, 5);
-counter++ 
-}
-  
+  function fulkerson() {
+    let graphLocal = JSON.parse(localStorage.getItem("graph"))
+    let start = parseInt(prompt("Por qual vertice o algoritmo deve começar?"))
+    let end = parseInt(prompt("Qual vertice o algoritmo deve terminar?"))
+      createEmptyMatrix(graphLocal);
+      let graphPopulated = populateMatrix(graphLocal);
+      addVertices(graphLocal.nodes.length);
+      fordFulkerson(graphPopulated, start, end);
+  }
 
   const options = {
     locale: "pt-br",
-    height: "800px",
+    height: "500px",
     width: "1000px",
     manipulation: configs.manipulation,
     edges: configs.edges,
@@ -83,6 +83,7 @@ counter++
   };
 
   return (
+    <>
     <Graph
       graph={graph}
       options={options}
@@ -91,5 +92,9 @@ counter++
         //  if you want access to vis.js network api you can set the state in a parent component using this property
       }}
     />
+    <button onClick={fulkerson}>
+      Rodar fulkeson
+    </button>
+    </>
   );
 }
