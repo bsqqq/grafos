@@ -31,13 +31,13 @@ function bfs(rGraph, s, t, parent)
     parent[s] = -1;
  
     // Standard BFS Loop
-    while (queue.length != 0)
+    while (queue.length !== 0)
     {
         let u = queue.shift();
  
         for(let v = 0; v < V; v++)
         {
-            if (visited[v] == false &&
+            if (visited[v] === false &&
                 rGraph[u][v] > 0)
             {
                  
@@ -45,7 +45,7 @@ function bfs(rGraph, s, t, parent)
                 // node, then there is no point in BFS
                 // anymore We just have to set its parent
                 // and can return true
-                if (v == t)
+                if (v === t)
                 {
                     parent[v] = u;
                     return true;
@@ -102,7 +102,7 @@ function fordFulkerson(graph, s, t)
         // along the path filled by BFS. Or we can say
         // find the maximum flow through the path found.
         let path_flow = Number.MAX_VALUE;
-        for(v = t; v != s; v = parent[v])
+        for(v = t; v !== s; v = parent[v])
         {
             u = parent[v];
             path_flow = Math.min(path_flow,
@@ -111,7 +111,7 @@ function fordFulkerson(graph, s, t)
  
         // Update residual capacities of the edges and
         // reverse edges along the path
-        for(v = t; v != s; v = parent[v])
+        for(v = t; v !== s; v = parent[v])
         {
             u = parent[v];
             rGraph[u][v] -= path_flow;

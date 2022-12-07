@@ -15,23 +15,23 @@ function populateMatrix(graph) {
   let y;
   for (let i = 0; i < graph.nodes.length; i++) {
     for (let j = 0; j < graph.edges.length; j++) {
-      if (graph.nodes[i].id == graph.edges[j].from) {
+      if (graph.nodes[i].id === graph.edges[j].from) {
         let x = graph.nodes[i].id;
 
         y = graph.edges[j].to;
 
-        if (x == y) {
+        if (x === y) {
         } else {
           let array;
 
-          if (x == graph.edges.length) {
+          if (x === graph.edges.length) {
             array = graph2[x - 1];
           } else {
             array = graph2[x];
           }
 
           let teste;
-          if (y == graph.edges.length) {
+          if (y === graph.edges.length) {
             teste = array[y - 1];
           } else {
             teste = array[y];

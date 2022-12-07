@@ -77,9 +77,9 @@ counter++
   };
 
   const events = {
-    select: function (event) {
-      const { nodes, edges } = event;
-    },
+    // select: function (event) {
+    //   // const { nodes, edges } = event;
+    // },
   };
 
   return (
