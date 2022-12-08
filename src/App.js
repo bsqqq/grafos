@@ -63,6 +63,7 @@ export default function App() {
     let graphPopulated = populateMatrix(graphLocal, matrixZerada);
     addVertices(graphLocal.nodes.length);
     fordFulkerson(graphPopulated, start - 1, end - 1);
+    document.querySelector(".result").innerHTML = `Fluxo máximo: ${fordFulkerson(graphPopulated, start - 1, end - 1)}`
   }
 
   const options = {
@@ -75,17 +76,15 @@ export default function App() {
     groups: configs.groups,
   };
 
-  const events = {};
-
   return (
     <>
       <Graph
         graph={graph}
         options={options}
-        events={events}
         getNetwork={(network) => {}}
       />
-      <button onClick={fulkerson}>Rodar fulkeson</button>
+      <button onClick={fulkerson}>Rodar Fulkeson</button>
+      <p className="result"></p>
     </>
   );
 }

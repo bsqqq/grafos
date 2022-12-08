@@ -15,3 +15,20 @@ code {
 canvas {
   border: 5px solid black;
 }
+
+.result {
+  font-size: xx-large;
+  margin-left: 30px;
+  font-family: monospace;
+  margin-top: 10px;
+}
+
+button {
+  margin-left: 30px;
+  padding: 10px;
+  background-color: aquamarine;
+}
+
+button:hover {
+  background-color: aqua;
+}
