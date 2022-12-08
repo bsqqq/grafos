@@ -53,17 +53,16 @@ export default function App() {
     ],
   };
 
-  localStorage.setItem("graph", JSON.stringify(graph))
+  localStorage.setItem("graph", JSON.stringify(graph));
 
-  
   function fulkerson() {
-    let graphLocal = JSON.parse(localStorage.getItem("graph"))
-    let start = parseInt(prompt("Por qual vertice o algoritmo deve começar?"))
-    let end = parseInt(prompt("Qual vertice o algoritmo deve terminar?"))
-      createEmptyMatrix(graphLocal);
-      let graphPopulated = populateMatrix(graphLocal);
-      addVertices(graphLocal.nodes.length);
-      fordFulkerson(graphPopulated, start, end);
+    let graphLocal = JSON.parse(localStorage.getItem("graph"));
+    let start = parseInt(prompt("Por qual vertice o algoritmo deve começar?"));
+    let end = parseInt(prompt("Qual vertice o algoritmo deve terminar?"));
+    let matrixZerada = createEmptyMatrix(graphLocal);
+    let graphPopulated = populateMatrix(graphLocal, matrixZerada);
+    addVertices(graphLocal.nodes.length);
+    fordFulkerson(graphPopulated, start - 1, end - 1);
   }
 
   const options = {
@@ -76,25 +75,17 @@ export default function App() {
     groups: configs.groups,
   };
 
-  const events = {
-    // select: function (event) {
-    //   // const { nodes, edges } = event;
-    // },
-  };
+  const events = {};
 
   return (
     <>
-    <Graph
-      graph={graph}
-      options={options}
-      events={events}
-      getNetwork={(network) => {
-        //  if you want access to vis.js network api you can set the state in a parent component using this property
-      }}
-    />
-    <button onClick={fulkerson}>
-      Rodar fulkeson
-    </button>
+      <Graph
+        graph={graph}
+        options={options}
+        events={events}
+        getNetwork={(network) => {}}
+      />
+      <button onClick={fulkerson}>Rodar fulkeson</button>
     </>
   );
 }
