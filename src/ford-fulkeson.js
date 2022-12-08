@@ -14,7 +14,7 @@ function bfs(rGraph, s, t, parent) {
 
   while (queue.length !== 0) {
     let u = queue.shift();
-
+    
     for (let v = 0; v < V; v++) {
       if (visited[v] === false && rGraph[u][v] > 0) {
         if (v === t) {
@@ -44,9 +44,11 @@ function fordFulkerson(graph, s, t) {
 
   while (bfs(rGraph, s, t, parent)) {
     let path_flow = Number.MAX_VALUE;
+    console.log("Origem: "+(s+1)+ " Destino: "+(t+1));
     for (v = t; v !== s; v = parent[v]) {
       u = parent[v];
       path_flow = Math.min(path_flow, rGraph[u][v]);
+      console.log("V: "+(v+1)+" U: "+(u+1)+ " Path_flow: "+path_flow);
     }
     for (v = t; v !== s; v = parent[v]) {
       u = parent[v];
