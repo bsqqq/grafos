@@ -1,0 +1,14 @@
+.matrix {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 400px;
+    margin-left: 10px;
+    font-size: xx-large;
+    margin-top: 15px;
+}
+
+p {
+    margin: 0
+}
+

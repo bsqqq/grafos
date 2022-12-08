@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import configs from "./configurações";
 import Graph from "react-vis-network-graph";
 import { fordFulkerson, addVertices } from "./ford-fulkeson";
 import { populateMatrix, createEmptyMatrix } from "./matrix-generator";
+import './matrix.css'
 
 export default function App() {
+  const [graphs, setGraphs] = useState([])
   const graph = {
     nodes: [
       { id: 1, label: "roteador 1", title: "roteador", group: "roteador" },
@@ -61,8 +63,21 @@ export default function App() {
     let end = parseInt(prompt("Qual vertice o algoritmo deve terminar?"));
     let matrixZerada = createEmptyMatrix(graphLocal);
     let graphPopulated = populateMatrix(graphLocal, matrixZerada);
+    graphPopulated = graphPopulated.map(linha => `${linha} \n`)
     addVertices(graphLocal.nodes.length);
     fordFulkerson(graphPopulated, start - 1, end - 1);
+    let organizado = graphPopulated
+    organizado = organizado.map(linha => linha.split(","))
+    let aux = ""
+    console.log(organizado)
+    organizado.forEach(linha => {
+      aux += linha.map(node => `
+        <div style="width: 50px; height: 50px; border: 2px solid black;">
+          <p>${node}</p>
+        </div>
+      `)
+    })
+    document.querySelector('.matrix').innerHTML = aux
   }
 
   const options = {
@@ -83,9 +98,12 @@ export default function App() {
         graph={graph}
         options={options}
         events={events}
-        getNetwork={(network) => {}}
+        getNetwork={(network) => { }}
       />
       <button onClick={fulkerson}>Rodar fulkeson</button>
+      <div className="matrix">
+
+      </div>
     </>
   );
 }
